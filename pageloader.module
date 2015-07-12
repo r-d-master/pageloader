@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * pageloader module file.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function pageloader_menu() {
+  $items['admin/config/development/pageloader'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pageloader_configuration_page'),
+    'access arguments' => array('access administration menu'),
+    'file' => 'pageloader.admin.inc',
+    'file path' => drupal_get_path('module', 'pageloader'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function pageloader_page_build(&$page) {
+  $pageloader_path = drupal_get_path('module', 'pageloader');
+
+  drupal_add_css($pageloader_path . '/css/normalize.css');
+  drupal_add_css($pageloader_path . '/css/demo.css');
+  drupal_add_css($pageloader_path . '/css/component.css');
+
+  drupal_add_js($pageloader_path . '/js/snap.svg-min.js');
+  drupal_add_js($pageloader_path . '/js/classie.js');
+  drupal_add_js($pageloader_path . '/js/svgLoader.js');
+  drupal_add_js($pageloader_path . '/js/pageloader.js');
+}

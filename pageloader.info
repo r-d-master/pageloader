@@ -1,0 +1,4 @@
+name = Page Loader
+core = 7.x
+package = pageloader
+version = 7.x-1.0
